@@ -1,8 +1,10 @@
 package com.gmail.ak1cec0ld.plugins.spongeHMs.hms;
 
+import com.gmail.ak1cec0ld.plugins.spongeHMs.SpongeHMs;
 import com.gmail.ak1cec0ld.plugins.spongeHMs.hms.cut.CutTree;
 import com.gmail.ak1cec0ld.plugins.spongeHMs.hms.dive.DiveSpot;
 import com.gmail.ak1cec0ld.plugins.spongeHMs.hms.rocksmash.SmashRock;
+import org.spongepowered.api.Sponge;
 import org.spongepowered.api.block.BlockSnapshot;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -12,6 +14,10 @@ import org.spongepowered.api.text.chat.ChatTypes;
 import java.util.Optional;
 
 public class InteractListener {
+
+    public InteractListener(){
+        Sponge.getEventManager().registerListeners(SpongeHMs.instance(), this);
+    }
 
     @Listener
     public void onInteract(InteractBlockEvent.Secondary.OffHand event){
@@ -27,6 +33,7 @@ public class InteractListener {
             player.sendMessage(ChatTypes.ACTION_BAR, construct.failMessage());
             return;
         }
+        player.sendMessage(ChatTypes.ACTION_BAR, construct.successMessage());
         construct.vanishAndRebuild();
     }
 

@@ -1,8 +1,6 @@
 package com.gmail.ak1cec0ld.plugins.spongeHMs;
 
-import com.gmail.ak1cec0ld.plugins.spongeHMs.hms.cut.CutController;
-import com.gmail.ak1cec0ld.plugins.spongeHMs.hms.dive.DiveController;
-import com.gmail.ak1cec0ld.plugins.spongeHMs.hms.rocksmash.RSmashController;
+import com.gmail.ak1cec0ld.plugins.spongeHMs.hms.InteractListener;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.spongepowered.api.event.Listener;
@@ -25,9 +23,7 @@ public class SpongeHMs{
         logger.info("Loading SpongeHMs");
         instance = this;
 
-        new CutController(this);
-        new DiveController(this);
-        new RSmashController(this);
+        new InteractListener();
     }
 
     public static SpongeHMs instance(){

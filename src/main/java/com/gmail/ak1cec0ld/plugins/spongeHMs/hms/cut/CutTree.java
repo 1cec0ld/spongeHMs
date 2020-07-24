@@ -30,7 +30,11 @@ public class CutTree implements IBreakable {
         while(isIdentifier(initial.add(0, 0, locsearchZ+1).getBlock())){
             locsearchZ++;
         }
-        root = initial.add(locsearchX%2-1,0,locsearchZ%2-1);
+        int rootYOffset = -1;
+        while(!isIdentifier(initial.add(0,rootYOffset,0).getBlock())){
+            rootYOffset--;
+        }
+        root = initial.add(locsearchX%2-1,rootYOffset,locsearchZ%2-1);
     }
 
     @Override
