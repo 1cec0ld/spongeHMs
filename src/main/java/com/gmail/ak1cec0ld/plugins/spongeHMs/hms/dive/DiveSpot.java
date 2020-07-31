@@ -72,7 +72,7 @@ public class DiveSpot implements IBreakable {
         return block.get(Keys.DIRECTION).get().equals(Direction.EAST);
     }
     private static boolean hasIdentifier(Location<World> hitBlock){
-        final int MAX_DEPTH = 8;
+        final int MAX_DEPTH = 10;
         for(int i = 0; i < MAX_DEPTH; i++){
             if(isIdentifier(hitBlock.add(0, -i,0).getBlock())){
                 return true;

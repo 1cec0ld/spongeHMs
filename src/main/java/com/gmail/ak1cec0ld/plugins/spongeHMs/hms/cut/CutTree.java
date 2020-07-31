@@ -22,19 +22,22 @@ public class CutTree implements IBreakable {
     private final Location<World> root;
 
     public CutTree(Location<World> initial){
-        int locsearchX = 0;
-        int locsearchZ = 0;
-        while(isIdentifier(initial.add(locsearchX+1, 0, 0).getBlock())){
-            locsearchX++;
-        }
-        while(isIdentifier(initial.add(0, 0, locsearchZ+1).getBlock())){
-            locsearchZ++;
-        }
         int rootYOffset = -1;
         while(!isIdentifier(initial.add(0,rootYOffset,0).getBlock())){
             rootYOffset--;
         }
-        root = initial.add(locsearchX%2-1,rootYOffset,locsearchZ%2-1);
+        int locsearchX = 0;
+        while(isIdentifier(initial.add(locsearchX, rootYOffset, 0).getBlock())){
+            locsearchX++;
+        }
+        int locsearchZ = 0;
+        while(isIdentifier(initial.add(0, rootYOffset, locsearchZ).getBlock())){
+            locsearchZ++;
+        }
+        //SpongeHMs.instance().logger().info(locsearchX+ " " + locsearchZ);
+        //SpongeHMs.instance().logger().info(initial.toString());
+        root = initial.add(-(locsearchX%2),rootYOffset,-(locsearchZ%2));
+        //SpongeHMs.instance().logger().info(root.toString());
     }
 
     @Override
